@@ -7,7 +7,5 @@ package com.gm.lollipop.data.storage
 interface LocalStorage {
     fun writeMessage(key: String, message: String)
     fun readMessage(key: String): String
-    fun clearPreferences()
-    fun logout()
     fun clearDataByKey(key: String)
 }

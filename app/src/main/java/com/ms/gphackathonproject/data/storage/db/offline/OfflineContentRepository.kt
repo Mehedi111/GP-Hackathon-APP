@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveDataReactiveStreams
 import com.gm.lollipop.data.Resource
 import com.ms.gphackathonproject.Constants
 import com.ms.gphackathonproject.data.model.Content
+import com.ms.gphackathonproject.data.model.DiscoverContent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -14,7 +15,7 @@ import javax.inject.Inject
  * Created by Mehedi Hasan on 12/10/2020.
  */
 
-class OfflineDownloadRepository @Inject constructor(
+class OfflineContentRepository @Inject constructor(
     private val offlineDaoAccess: OfflineDaoAccess
 ) {
 
@@ -23,7 +24,7 @@ class OfflineDownloadRepository @Inject constructor(
      * @param content content which need to perform action
      */
     fun changeWishListStatus(makeWish: Boolean, content: Content) {
-        val offlineDownload = OfflineDownload()
+        val offlineDownload = OfflineContent()
         val contentId = content.id
         offlineDownload.id = contentId
         offlineDownload.isWishList = if (makeWish) Constants.WISHLIST else Constants.NOT_WISHLIST
@@ -68,13 +69,17 @@ class OfflineDownloadRepository @Inject constructor(
     /**
      * get all wishlist from local db
      */
-    fun getAllWishList(): LiveData<Resource<List<OfflineDownload>>> {
+    fun getAllWishList(): LiveData<Resource<List<OfflineContent>>> {
         return LiveDataReactiveStreams.fromPublisher(offlineDaoAccess.getAllWishListContent()
             .subscribeOn(Schedulers.io())
             .map {
                 Resource.success(it)
             }
-            .onErrorReturn { throwable -> Resource.error(throwable.message, null) }
+            .onErrorReturn {
+                    throwable -> Resource.error(throwable.message, null)
+            }
             .toFlowable())
     }
+
+
 }

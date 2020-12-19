@@ -34,4 +34,5 @@ object Constants {
     const val TYPE_MOVIE = "Popular Movies"
     const val TYPE_TV = "TV Series"
     const val TYPE_TRENDING = "Trending Now"
+    const val TYPE_WISHLIST = "Wishlist"
 }

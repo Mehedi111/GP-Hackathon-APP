@@ -15,4 +15,8 @@
     <string name="read_more">More</string>
     <string name="read_less">Less</string>
     <string name="extraText">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "</string>
+    <string name="no_video_found">No video found !</string>
+
+    <string name="discover">Discover</string>
+    <string name="my_wishlist">My Wishlist</string>
 </resources>

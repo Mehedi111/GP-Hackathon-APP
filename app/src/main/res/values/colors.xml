@@ -10,5 +10,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="color_primary">#FD106B</color>
-    <color name="color_secondary">#B199A2</color>
+    <color name="color_secondary">#EBC9BE</color>
+    <color name="color_action">#FFDBCF</color>
 </resources>

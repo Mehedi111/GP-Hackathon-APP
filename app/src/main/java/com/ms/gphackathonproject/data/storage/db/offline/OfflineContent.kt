@@ -17,7 +17,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity(indices = [Index(value = ["id"], unique = true)])
 @Parcelize
-data class OfflineDownload(
+data class OfflineContent(
 
     @NonNull
     @PrimaryKey(autoGenerate = true)

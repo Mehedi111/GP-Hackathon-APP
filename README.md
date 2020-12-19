@@ -1,6 +1,6 @@
 # Movie APP for GP Hackathon
 
-A simple app for movies and TV shows.
+A simple app for details of movies and TV shows.
 
 
 ## Architecture

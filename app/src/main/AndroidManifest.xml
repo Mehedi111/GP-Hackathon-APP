@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GPHackathonProject">
-        <activity android:name=".ui.details.ContentDetailsActivity"></activity>
+        <activity android:name=".ui.wishlist.WishListActivity"></activity>
+        <activity android:name=".ui.details.ContentDetailsActivity" />
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

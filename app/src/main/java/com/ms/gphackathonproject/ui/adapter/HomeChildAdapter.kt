@@ -26,6 +26,7 @@ class HomeChildAdapter(
     private val VIEW_TYPE_MOVIE = 1
     private val VIEW_TYPE_TV_SHOW = 2
     private val VIEW_TYPE_TRENDING = 3
+    private val VIEW_TYPE_WISHLIST = 4
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewHolder: RecyclerView.ViewHolder
@@ -46,7 +47,8 @@ class HomeChildAdapter(
                     )
                 viewHolder = TvViewHolder(binding)
             }
-            VIEW_TYPE_TRENDING -> {
+
+            VIEW_TYPE_WISHLIST, VIEW_TYPE_TRENDING -> {
                 val binding =
                     LayoutTrendingItemsBinding.inflate(LayoutInflater.from(context), parent, false)
                 viewHolder = TrendingViewHolder(binding)
@@ -112,7 +114,7 @@ class HomeChildAdapter(
                 tvHolder.binding.title.text = content.title ?: content.name ?: ""
 
             }
-            VIEW_TYPE_TRENDING -> {
+            VIEW_TYPE_WISHLIST, VIEW_TYPE_TRENDING -> {
                 val trendingViewHolder: TrendingViewHolder =
                     holder as TrendingViewHolder
 
@@ -126,10 +128,6 @@ class HomeChildAdapter(
 
                 trendingViewHolder.binding.title.text = content.title ?: content.name ?: ""
 
-
-                /*content.vote_count?.let {
-                    trendingViewHolder.binding.vote.text = ("Vote Count : ${it}")
-                }*/
             }
         }
     }
@@ -150,7 +148,7 @@ class HomeChildAdapter(
             Constants.TYPE_MOVIE -> VIEW_TYPE_MOVIE
             Constants.TYPE_TV -> VIEW_TYPE_TV_SHOW
             Constants.TYPE_TRENDING -> VIEW_TYPE_TRENDING
-            else -> VIEW_TYPE_MOVIE
+            else -> VIEW_TYPE_WISHLIST
         }
     }
 }

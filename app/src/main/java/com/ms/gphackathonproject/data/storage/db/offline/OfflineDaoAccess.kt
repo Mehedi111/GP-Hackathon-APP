@@ -11,22 +11,22 @@ import io.reactivex.Single
 interface OfflineDaoAccess {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun createOfflineContent(offlineDownload: OfflineDownload): Single<Long>
+    fun createOfflineContent(offlineContent: OfflineContent): Single<Long>
 
-    @Query("SELECT * FROM OfflineDownload WHERE id = :contentId")
-    fun searchOfflineContent(contentId: Int): Single<OfflineDownload>
+    @Query("SELECT * FROM OfflineContent WHERE id = :contentId")
+    fun searchOfflineContent(contentId: Int): Single<OfflineContent>
 
-    @Query("SELECT * FROM OfflineDownload WHERE isWishList = 1")
-    fun getAllWishListContent(): Single<List<OfflineDownload>>
+    @Query("SELECT * FROM OfflineContent WHERE isWishList = 1")
+    fun getAllWishListContent(): Single<List<OfflineContent>>
 
 
-    @Query("UPDATE OfflineDownload SET isWishList = 1 WHERE id = :contentId")
+    @Query("UPDATE OfflineContent SET isWishList = 1 WHERE id = :contentId")
     fun addWishListFlag(contentId: Int): Single<Int>
 
-    @Query("UPDATE OfflineDownload SET isWishList = 0 WHERE id = :contentId")
+    @Query("UPDATE OfflineContent SET isWishList = 0 WHERE id = :contentId")
     fun removeWishListFlag(contentId: Int): Single<Int>
 
-    @Query("UPDATE OfflineDownload SET isWishList = 0")
+    @Query("UPDATE OfflineContent SET isWishList = 0")
     fun removeAllWishListFlag(): Single<Int>
 
 

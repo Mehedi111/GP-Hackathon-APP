@@ -49,11 +49,13 @@ class HomeParentAdapter(private val context: Context) :
         }
 
         holder.binding.childRv.adapter =
-            HomeChildAdapter(
-                context,
-                content.contentType ?: Constants.TYPE_MOVIE,
-                content.results
-            )
+            content.results?.let {
+                HomeChildAdapter(
+                    context,
+                    content.contentType ?: Constants.TYPE_MOVIE,
+                    it
+                )
+            }
     }
 
     override fun getItemCount(): Int = dataList.size

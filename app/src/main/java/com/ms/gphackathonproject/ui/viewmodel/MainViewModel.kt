@@ -6,13 +6,13 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import com.gm.lollipop.data.Event
 import com.gm.lollipop.data.Resource
-import com.gm.lollipop.storage.db.download.OfflineDownloadRepository
+import com.gm.lollipop.storage.db.download.OfflineContent
+import com.gm.lollipop.storage.db.download.OfflineContentRepository
+import com.ms.gphackathonproject.Constants
 import com.ms.gphackathonproject.data.model.Content
 import com.ms.gphackathonproject.data.model.DiscoverContent
 import com.ms.gphackathonproject.data.model.details.ContentDetails
 import com.ms.gphackathonproject.data.rest.RestRepository
-import io.reactivex.Observable
-import java.util.concurrent.TimeUnit
 
 /**
  * Created by Mehedi Hasan on 12/19/2020.
@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit
 
 class MainViewModel @ViewModelInject constructor(
     private val restRepository: RestRepository,
-    private val offlineDownloadRepository: OfflineDownloadRepository
+    private val offlineContentRepository: OfflineContentRepository
 ) : ViewModel() {
 
     private val _moviesLiveData: MediatorLiveData<Event<Resource<DiscoverContent>>> by lazy {
@@ -40,9 +40,25 @@ class MainViewModel @ViewModelInject constructor(
         MediatorLiveData<Event<Resource<DiscoverContent>>>()
     }
 
+    private val _offlineMoviesLiveData: MediatorLiveData<Event<Resource<DiscoverContent>>> by lazy {
+        MediatorLiveData<Event<Resource<DiscoverContent>>>()
+    }
+
+    private val _offlineTvLiveData: MediatorLiveData<Event<Resource<DiscoverContent>>> by lazy {
+        MediatorLiveData<Event<Resource<DiscoverContent>>>()
+    }
+
+    private val _offlineTrendingLiveData: MediatorLiveData<Event<Resource<DiscoverContent>>> by lazy {
+        MediatorLiveData<Event<Resource<DiscoverContent>>>()
+    }
+
     private val _contentDetailsLiveData: MediatorLiveData<Event<Resource<ContentDetails>>> by lazy {
         MediatorLiveData<Event<Resource<ContentDetails>>>()
     }
+
+    private val _offlineDownloadsLiveData: MediatorLiveData<Resource<List<OfflineContent>>> =
+        MediatorLiveData<Resource<List<OfflineContent>>>()
+
 
     /*
      * observe live data of movies and tv
@@ -126,12 +142,79 @@ class MainViewModel @ViewModelInject constructor(
         }
     }
 
+    fun getOfflineMovies(){
+        _offlineMoviesLiveData.postValue(Event(Resource.loading(null)))
+        val resourceLiveData = restRepository.getHomeDataFromCache(Constants.TYPE_MOVIE)
+        _offlineMoviesLiveData.addSource(resourceLiveData) { data ->
+            if (data != null) {
+                _offlineMoviesLiveData.value = data
+            }
+            _offlineMoviesLiveData.removeSource(resourceLiveData)
+        }
+    }
+
+    fun getOfflineTVShows(){
+        _offlineTvLiveData.postValue(Event(Resource.loading(null)))
+        val resourceLiveData = restRepository.getHomeDataFromCache(Constants.TYPE_TV)
+        _offlineTvLiveData.addSource(resourceLiveData) { data ->
+            if (data != null) {
+                _offlineTvLiveData.value = data
+            }
+            _offlineTvLiveData.removeSource(resourceLiveData)
+        }
+    }
+
+    fun getOfflineTrending(){
+        _offlineTrendingLiveData.postValue(Event(Resource.loading(null)))
+        val resourceLiveData = restRepository.getHomeDataFromCache(Constants.TYPE_TRENDING)
+        _offlineTrendingLiveData.addSource(resourceLiveData) { data ->
+            if (data != null) {
+                _offlineTrendingLiveData.value = data
+            }
+            _offlineTrendingLiveData.removeSource(resourceLiveData)
+        }
+    }
+    /*
+   * Observer data from local
+   * */
+    fun observeOfflineMovieLiveData(): LiveData<Event<Resource<DiscoverContent>>> {
+        return _offlineMoviesLiveData
+    }
+    fun observeOfflineTVLiveData(): LiveData<Event<Resource<DiscoverContent>>> {
+        return _offlineTvLiveData
+    }
+
+    fun observeOfflineTrendingLiveData(): LiveData<Event<Resource<DiscoverContent>>> {
+        return _offlineTrendingLiveData
+    }
+
+
+
 
     /*
     * change wishlist status
     * */
-    fun changeWishListStatus(makeWish: Boolean, content: Content){
-       offlineDownloadRepository.changeWishListStatus(makeWish, content)
+    fun changeWishListStatus(makeWish: Boolean, content: Content) {
+        offlineContentRepository.changeWishListStatus(makeWish, content)
+    }
+
+
+    /*
+    * get all wish list from local db
+    * */
+    fun observeOfflineLiveData(): LiveData<Resource<List<OfflineContent>>> {
+        return _offlineDownloadsLiveData
+    }
+
+    fun getWishlistLiveData() {
+        _offlineDownloadsLiveData.postValue(Resource.loading(null))
+        val resourceLiveData = offlineContentRepository.getAllWishList()
+        _offlineDownloadsLiveData.addSource(resourceLiveData) { data ->
+            if (data != null) {
+                _offlineDownloadsLiveData.value = data
+            }
+            _offlineDownloadsLiveData.removeSource(resourceLiveData)
+        }
     }
 
 }

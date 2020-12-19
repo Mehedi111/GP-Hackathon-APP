@@ -19,14 +19,7 @@ class PreferenceStorage(private val context: Context) : LocalStorage {
             .getString(key, "") ?: ""
     }
 
-    override fun clearPreferences() {
 
-    }
-
-    override fun logout() {
-        context.getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
-            .edit().clear().apply()
-    }
 
     override fun clearDataByKey(key: String) {
         context.getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE)
