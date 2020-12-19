@@ -33,6 +33,10 @@ buildscript {
         reactivestreams_version = '2.2.0'
         timber_version = '4.7.1'
         sdp_version = '1.0.6'
+        truth_lib = '1.0.1'
+        hilt_test_version = '2.28-alpha'
+        android_core_version = '2.1.0'
+        coroutines_test_version = '1.2.1'
 
     }
     repositories {
