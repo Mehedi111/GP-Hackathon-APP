@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/margin_8"
+    android:layout_marginBottom="@dimen/margin_8"
+
+    app:cardCornerRadius="@dimen/margin_8"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="false">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/content_des"
+            android:scaleType="fitXY"
+            android:src="@drawable/default_potrait" />
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/previewImage"
+            android:layout_alignStart="@+id/previewImage"
+            android:layout_alignEnd="@+id/previewImage"
+            android:layout_marginTop="@dimen/margin_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="@dimen/margin_8"
+            android:paddingEnd="@dimen/margin_8"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16"
+            android:textStyle="bold"
+            tools:text="Title" />
+
+        <TextView
+            android:id="@+id/vote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_alignStart="@+id/previewImage"
+            android:layout_alignEnd="@+id/previewImage"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="@dimen/margin_8"
+            android:paddingEnd="@dimen/margin_8"
+            android:textColor="@color/secondary_txt"
+            android:textSize="@dimen/text_size_14"
+            tools:text="vote count: 1200" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vote"
+            android:layout_alignStart="@+id/previewImage"
+            android:layout_alignEnd="@+id/previewImage"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="@dimen/margin_8"
+            android:paddingEnd="@dimen/margin_8"
+            android:textColor="@color/secondary_txt"
+            android:textSize="@dimen/text_size_14"
+            tools:text="release: 12/11/2020" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

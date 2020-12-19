@@ -1,0 +1,142 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android.extensions'
+}
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.ms.gphackathonproject"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        vectorDrawables.useSupportLibrary = true
+
+        buildConfigField("String", "BASE_URL", BASE_URL)
+        buildConfigField("String", "API_KEY", API_KEY)
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:' + kotlin_version
+    implementation 'androidx.core:core-ktx:' + core_ktx_version
+    implementation 'androidx.appcompat:appcompat:' + appcompat_version
+    implementation 'com.google.android.material:material:' + material_version
+    implementation 'androidx.constraintlayout:constraintlayout:' + constraintlayout_version
+
+    implementation 'androidx.vectordrawable:vectordrawable:' + supportVersion
+    implementation 'androidx.legacy:legacy-support-v4:' + supportVersion
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+
+    //TEST LIBRARIES
+    testImplementation 'junit:junit:' + jnuit_test_version
+    androidTestImplementation 'androidx.test.ext:junit:' + jnuit_androidtest_version
+    androidTestImplementation 'androidx.test.espresso:espresso-core:' + espresso_version
+
+
+    // Architectural Components
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:' + reactivestreams_version
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:' + lifecycle_version
+
+    // Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:' + lifecycle_version
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:' + lifecycle_version
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:' + lifecycle_version
+
+    // Room
+    implementation 'androidx.room:room-runtime:' + room_version
+    kapt 'androidx.room:room-compiler:' + room_version
+
+    //Room for RXJAVA
+    implementation 'androidx.room:room-rxjava2:' + room_version
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation 'androidx.room:room-ktx:' + room_version
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:' + coroutines_version
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:' + coroutines_version
+
+
+    // Navigation Components
+    implementation 'androidx.navigation:navigation-fragment-ktx:' + navigation_com_version
+    implementation 'androidx.navigation:navigation-ui-ktx:' + navigation_com_version
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:' + glide_version
+    kapt 'com.github.bumptech.glide:compiler:' + glide_version
+
+    // Dagger Core
+    implementation 'com.google.dagger:dagger:' + dagger_core_version
+    kapt 'com.google.dagger:dagger-compiler:' + dagger_core_version
+
+    // Dagger Android
+    api 'com.google.dagger:dagger-android:' + dagger_android_version
+    api 'com.google.dagger:dagger-android-support:' + dagger_android_version
+    kapt 'com.google.dagger:dagger-android-processor:' + dagger_android_version
+
+    //Dagger - Hilt
+    implementation 'com.google.dagger:hilt-android:' + dagger_hilt_version
+    kapt 'com.google.dagger:hilt-android-compiler:' + dagger_hilt_version
+
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:' + dagger_hilt_lifecycler_version
+    kapt 'androidx.hilt:hilt-compiler:' + dagger_hilt_lifecycler_version
+
+    // Activity KTX for viewModels()
+    implementation 'androidx.activity:activity-ktx:' + activity_ktx_version
+    // Networking
+    implementation 'com.squareup.retrofit2:retrofit:' + retrofit_version
+    implementation 'com.squareup.retrofit2:converter-gson:' + retrofit_version
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:' + retrofit_version
+    implementation 'com.squareup.okhttp3:okhttp:' + okhttp_version
+    implementation 'com.squareup.okhttp3:logging-interceptor:' + okhttp_version
+
+    //Rx Java
+    implementation 'io.reactivex.rxjava2:rxandroid:' + rxjava_version
+    implementation 'io.reactivex.rxjava2:rxkotlin:' + rxjava_version
+    implementation 'io.reactivex.rxjava2:rxjava:' + rxjava_version
+    implementation 'com.jakewharton.rxbinding3:rxbinding-core:' + rxbinding_version
+    implementation 'com.jakewharton.rxbinding3:rxbinding-appcompat:' + rxbinding_version
+    implementation 'com.github.tbruyelle:rxpermissions:' + rxpermission_version
+
+    ///google play
+    implementation 'com.google.android.play:core:' + google_play_core_version
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:' + timber_version
+
+    ///dimension
+    implementation 'com.intuit.sdp:sdp-android:' + sdp_version
+}

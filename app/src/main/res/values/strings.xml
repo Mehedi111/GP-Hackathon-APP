@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">GP Hackathon Project</string>
+
+    <!--Network Connections-->
+    <string name="error_loading_data">An error occurred while loading data!</string>
+    <string name="error_timeout">Server Timeout!</string>
+    <string name="error_unable_to_reach">Unable to reach server!</string>
+    <string name="error_no_internet_connection">No internet connection!</string>
+    <string name="error_data_conversion">Failed to parse data!</string>
+    <string name="error_unknown">An unknown error occurred!</string>
+    <string name="hint_user_online">You are now online!</string>
+    <string name="hint_user_offline">You are now offline!</string>
+    <string name="ok">okay</string>
+    <string name="content_des">image</string>
+    <string name="read_more">More</string>
+    <string name="read_less">Less</string>
+    <string name="extraText">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "</string>
+</resources>
