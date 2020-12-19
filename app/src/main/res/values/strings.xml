@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">GP Hackathon Project</string>
 
     <!--Network Connections-->
     <string name="error_loading_data">An error occurred while loading data!</string>

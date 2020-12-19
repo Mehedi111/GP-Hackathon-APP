@@ -7,7 +7,6 @@ import com.gm.lollipop.storage.db.download.OfflineDaoAccess
 import com.google.common.truth.Truth.assertThat
 import com.ms.gphackathonproject.data.model.Content
 import com.ms.gphackathonproject.data.storage.db.AppDatabase
-import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi

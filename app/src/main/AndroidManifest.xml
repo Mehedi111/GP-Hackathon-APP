@@ -9,12 +9,12 @@
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="${appIcon}"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="${appIconRound}"
         android:supportsRtl="true"
         android:theme="@style/Theme.GPHackathonProject">
-        <activity android:name=".ui.wishlist.WishListActivity"></activity>
+        <activity android:name=".ui.wishlist.WishListActivity"/>
         <activity android:name=".ui.details.ContentDetailsActivity" />
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>

@@ -13,6 +13,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
+        flavorDimensions "default"
         applicationId "com.ms.gphackathonproject"
         minSdkVersion 21
         targetSdkVersion 29
@@ -42,6 +43,33 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+
+    productFlavors {
+        Telenor {
+            applicationId "com.ms.gphackathonproject.telenor"
+            versionCode 1
+            versionName "1.0"
+            resValue "string", "app_name", "Telenor"
+
+            manifestPlaceholders = [
+                    appIcon: "@drawable/telenor_logo",
+                    appIconRound: "@drawable/telenor_logo"
+            ]
+        }
+
+        Grameenphone {
+            applicationId "com.ms.gphackathonproject.Grameenphone"
+            versionCode 1
+            versionName "1.0"
+            resValue "string", "app_name", "Grameenphone"
+
+            manifestPlaceholders = [
+                    appIcon: "@drawable/gp_logo",
+                    appIconRound: "@drawable/gp_logo"
+            ]
+        }
     }
 }
 
